@@ -5,16 +5,16 @@ import org.testng.Assert;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class TestingGetMethodWithJava {
+public class DeleteMethod {
+
 	
-	public void getTest() {
-	
-		Response response = RestAssured.get("http://dummy.restapiexample.com/api/v1/employees");
+	public void getDeleteTest() {
+		
+		Response response = RestAssured.delete("http://localhost:3000/posts/12");
 		
 		System.out.println("Status code ="+response.getStatusCode());//200
 		Assert.assertEquals(response.getStatusCode(), 200);
 		System.out.println("Data format ="+response.getContentType());//json
-		Assert.assertEquals(response.getContentType(), "application/json");
 		Assert.assertTrue(response.getContentType().contains("json"));
 		System.out.println("Resonce time ="+response.getTime());//time
 		Assert.assertTrue(response.getTime()<2000);
@@ -29,7 +29,7 @@ public class TestingGetMethodWithJava {
 		
 	}
 	public static void main(String[] args) {
-		new TestingGetMethodWithJava().getTest();
+		new DeleteMethod().getDeleteTest();
 	}
 
 }

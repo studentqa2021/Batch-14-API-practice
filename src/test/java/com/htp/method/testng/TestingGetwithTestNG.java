@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 public class TestingGetwithTestNG {
@@ -38,6 +39,18 @@ public class TestingGetwithTestNG {
 		Assert.assertTrue(response.toString()!= null);
 		
 	}
+	@Test
+	public void getResponseDataValidation() {
+	JsonPath jp = response.jsonPath();
+	System.out.println("status value found = "+jp.get("status").toString());
+	Assert.assertTrue(jp.get("data").toString() != null);
+
+	Assert.assertEquals(jp.get("status").toString(), "success");
+	System.out.println("1st employee name  = "+jp.get("data[0].employee_name").toString());
+	Assert.assertEquals(jp.get("data[0].employee_name").toString(), "Tiger Nixon");
+	}
+	
+	
 	@AfterTest
 	public void teardown() {
 	
