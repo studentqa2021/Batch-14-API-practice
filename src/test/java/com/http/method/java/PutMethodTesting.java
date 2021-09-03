@@ -9,7 +9,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class PostTesting {
+public class PutMethodTesting {
 	
 	public void getPostTest() {
 
@@ -49,7 +49,7 @@ public class PostTesting {
 		
 	}
 	public static void main(String[] args) {
-		new PostTesting().getPostTest();
+		new PutMethodTesting().getPostTest();
 	}
 
 }
